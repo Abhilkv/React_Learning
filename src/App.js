@@ -1,3 +1,4 @@
+/* eslint-disable no-fallthrough */
 import React from 'react';
 import './App.css';
 
@@ -9,61 +10,39 @@ class sample extends React.Component {
         login: false
       }
   }
+  onKeyUp = (target, e) => {
+    if (e.keyCode === 13) {
+      switch (target) {
+        case 'firstName':
+          this.lastName.focus();
+          break;
+        case 'lastName':
+          this.submit.focus();
+          break
+        default:
+          this.firstName.focus();
+      }
+    }
+  }
   handleClick = () => {
-    this.setState((prevState)=> {
-      return {
-        count: prevState.count + 1
-      }
-    })
+    alert(this.firstName.value + this.lastName.value );
   }
-  handleClickM = () => {
-    this.state.count > 0 && this.setState((prevState)=> {
-      return {
-        count: prevState.count - 1
-      }
-    })
-  }
-  handleClickR = () => {
-    this.setState((prevState)=> {
-      return {
-        count: 0
-      }
-    })
-  }
-  handleLogin = () => {
-    this.handleClickR();
-    this.setState((prevState)=> {
-      return {
-        login: !prevState.login
-      }
-    })
-  }
+  
   render() {
     return (
-      <div className="main">
-        { this.state.login ? 
-        <div>
-        <h1>{this.state.count}</h1>
-        <button onClick={this.handleClick} className="btn">
-          <h1> + </h1>
-        </button>
-        <button onClick={this.handleClickM} className="btn">
-          <h1> - </h1>
-        </button>
-        <button onClick={this.handleClickR} className="btn">
-          <h1> RESET </h1>
-        </button>
-        <button onClick={this.handleLogin} className="btnL">
-          LOG OUT
-        </button>
-      </div>
-      :
-      <div>
-        <button onClick={this.handleLogin}>
-          LOGIN
-        </button>
-      </div>}
-      </div>
+     <div>
+       <div className="inputField">
+         <span>First Name</span>
+         <input type="text" ref={(input)=>{this.firstName=input}} onKeyUp={this.onKeyUp.bind(this, 'firstName')}></input>
+       </div>
+       <div className="inputField">
+         <span>First Name</span>
+         <input type="text" ref={(input)=>{this.lastName=input}} onKeyUp={this.onKeyUp.bind(this, 'lastName')}></input>
+       </div>
+       <div className="inputField">
+         <button type="submit" onClick={this.handleClick} ref={(input)=>{this.submit=input}} onKeyUp={this.onKeyUp.bind(this, 'submit')}>Submit</button>
+       </div>
+     </div>
     )
   }
 }
