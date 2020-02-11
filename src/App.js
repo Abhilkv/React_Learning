@@ -1,6 +1,10 @@
 import React from 'react';
 import './App.css';
+import store from './store/index';
+import nameAction  from './actions/nameAction';
+import gameAction  from './actions/gameAction';
 
+<<<<<<< Updated upstream
 class sample extends React.Component {
   constructor() {
     super ()
@@ -68,3 +72,19 @@ class sample extends React.Component {
   }
 }
 export default sample;
+=======
+function App() {
+    return (
+      <div>
+        <h1>PERSON NAME</h1>
+        <span> Person Name: {store.getState().name.name}</span>
+        <button onClick={store.dispatch(nameAction)}>CHANGE NAME</button>
+        <br/>
+        <span> Person Game: {store.getState().game.name}</span>
+        <button onClick={store.dispatch(gameAction)}>CHANGE GAME</button>
+      </div> 
+    );
+}
+export default App;
+  
+>>>>>>> Stashed changes
