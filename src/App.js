@@ -32,3 +32,5 @@ export default connect(
   mapStateToProps,
   mapDispachToProps
 )(App);
+
+// Look at the sagas.js
