@@ -15,5 +15,9 @@ const sagaMiddleware = createSagaMiddleware();
 const store = createStore(reducer, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(watchAgeUp);
 
+// Like watchAgeUp we can create many other generator functions in root saga only thing required is to run them
+// inside sagaMiddleware.run() at root index.js file
+
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 
+ 
