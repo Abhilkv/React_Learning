@@ -1,7 +1,10 @@
 import { put, takeEvery, call } from 'redux-saga/effects'
 
 function* ageUpAsync(action) {
+
+    // yield call([localStorage,  'removeItem'], "token");  == yield localStorage.removeItem("token")
     yield put({ type: 'AGE_UP_ASYNC', value: action.value});
+
     //const apiResponse = yield call(axios, reqParams);
     // if it is a api call make it in a try catch block, if there s any error yield put the error type
     // on logout if we want to clear the localstorage do it like this yield localstorage.setItem(), i.e every activity should be 
