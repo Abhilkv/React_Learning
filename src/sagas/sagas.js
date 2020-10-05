@@ -3,6 +3,11 @@ import { put, takeEvery, call } from 'redux-saga/effects'
 function* ageUpAsync() {
     yield put({ type: 'AGE_UP_ASYNC', value: 1})
     //const apiResponse = yield call(axios, reqParams);
+    // if it is a api call make it in a try catch block, if there s any error yield put the error type
+    // on logout if we want to clear the localstorage do it like this yield localstorage.setItem(), i.e every activity should be 
+    // done with yield
+
+    // instead of setTimeout saga has its on delay function try to use it if required
 }
 
 export  function* watchAgeUp() {
