@@ -17,9 +17,19 @@ export const ageUp = (value) => {
     }
 }
 
+export const storeToken = (token, callback) => async dispatch => {
+    await Storage._storeUserTokenAsync(token)
+    dispatch({ type: LOGIN_SUCCESS, payload: token });
+    callback();
+}
+
+// on storeTokenthe dispatch will happen only when the storing token is finished
+// similar to using yield in saga 
+
 export const ageDown = () => {
     return { type: "AGE_DOWN", value: 1 }
 }
+
 
 
 // here the ageUp is made Async function with thunk when we click ageUp button the action will
